@@ -22,13 +22,11 @@ public class CustomOAuth2AuthenticationSuccessHandler extends SimpleUrlAuthentic
     private UserService userService;
 
 
-
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         OAuth2User oAuthUser = (OAuth2User) authentication.getPrincipal();
         System.out.println("something");
         User user = userService.getOrCreateUser(oAuthUser);
-
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }
